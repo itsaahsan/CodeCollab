@@ -1,0 +1,48 @@
+.user-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-list h3 {
+  font-size: 14px;
+  color: #cccccc;
+  margin-bottom: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: #2d2d30;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.user-item:hover {
+  background: #3e3e42;
+}
+
+.user-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.user-name {
+  font-size: 13px;
+  color: #d4d4d4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

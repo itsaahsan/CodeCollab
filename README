@@ -1,0 +1,193 @@
+# CodeCollab - Real-time Collaborative Code Editor
+
+A Google Docs-style collaborative code editor with real-time synchronization, multiple cursor tracking, syntax highlighting, code execution, and video chat.
+
+## Features
+
+### Core Features
+- **Real-time Collaboration**: Multiple users can edit code simultaneously
+- **Multiple Cursors**: See where other users are typing in real-time
+- **Syntax Highlighting**: Powered by Monaco Editor (VS Code's editor)
+- **Code Execution**: Run JavaScript code directly in the browser
+- **Video Chat**: Built-in WebRTC video chat for pair programming
+- **Room-based**: Create or join rooms with unique IDs
+
+### Technical Highlights
+- **WebSocket Communication**: Real-time sync using Socket.io
+- **Conflict Resolution**: Smart merging of simultaneous edits
+- **User Presence**: Live user list with colored indicators
+- **Language Support**: Multiple programming languages with syntax highlighting
+- **Responsive UI**: Dark theme optimized for coding
+
+## Tech Stack
+
+### Frontend
+- React 18
+- Monaco Editor (VS Code editor)
+- Socket.io Client
+- Simple-Peer (WebRTC)
+
+### Backend
+- Node.js
+- Express
+- Socket.io
+- UUID for room management
+
+## Project Structure
+
+```
+CodeCollab/
+├── server/
+│   └── index.js              # WebSocket server
+├── client/
+│   ├── public/
+│   │   └── index.html
+│   └── src/
+│       ├── components/
+│       │   ├── CodeEditor.js     # Monaco editor wrapper
+│       │   ├── UserList.js       # Active users display
+│       │   ├── ControlPanel.js   # Language selector & controls
+│       │   ├── Output.js         # Code execution results
+│       │   ├── VideoChat.js      # WebRTC video chat
+│       │   └── *.css             # Component styles
+│       ├── App.js                # Main application
+│       ├── App.css
+│       ├── index.js
+│       └── index.css
+├── package.json
+└── README
+```
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Install root dependencies:
+```bash
+npm install
+```
+
+2. Install client dependencies:
+```bash
+cd client
+npm install
+cd ..
+```
+
+### Running the Application
+
+#### Option 1: Run both servers concurrently
+```bash
+npm run dev
+```
+
+#### Option 2: Run servers separately
+
+Terminal 1 (Backend):
+```bash
+npm run server
+```
+
+Terminal 2 (Frontend):
+```bash
+npm run client
+```
+
+The application will be available at:
+- Frontend: http://localhost:3000
+- Backend: http://localhost:3001
+
+## How to Use
+
+1. **Create/Join Room**:
+   - Enter a Room ID (create new or use existing)
+   - Enter your username
+   - Click "Join Room"
+
+2. **Collaborate**:
+   - Start typing code
+   - See other users' cursors in real-time
+   - Select programming language from dropdown
+   - Click "Run Code" to execute JavaScript
+
+3. **Video Chat**:
+   - Click "Show Video" to enable video chat
+   - Grant camera/microphone permissions
+   - See all participants in video grid
+
+## Key Implementation Details
+
+### Real-time Synchronization
+- Uses Socket.io for bidirectional communication
+- Each code change is broadcast to all room members
+- Cursor positions tracked and displayed with user colors
+
+### Conflict Resolution
+- Last-write-wins strategy for simplicity
+- Could be enhanced with Operational Transformation or CRDTs
+
+### Code Execution
+- JavaScript runs in sandboxed environment
+- Custom console.log captures output
+- Error handling with stack traces
+
+### Video Chat
+- WebRTC peer-to-peer connections
+- Simple-Peer library for connection management
+- Signaling through WebSocket server
+
+## Security Considerations
+
+**Important**: This is a demonstration project. For production use:
+- Implement authentication and authorization
+- Add rate limiting
+- Sandbox code execution properly (use containers)
+- Add input validation and sanitization
+- Implement proper error handling
+- Use HTTPS and secure WebSocket connections
+- Add room access controls
+
+## Future Enhancements
+
+- File system with multiple files per room
+- Git integration
+- Chat messaging
+- Screen sharing
+- Code execution for multiple languages
+- Operational Transformation for better conflict resolution
+- User authentication
+- Persistent storage
+- Code formatting and linting
+- Collaborative debugging
+
+## Browser Support
+
+- Chrome/Edge (recommended)
+- Firefox
+- Safari (WebRTC may have limitations)
+
+## Troubleshooting
+
+**Port already in use**:
+- Change PORT in server/index.js
+- Update proxy in client/package.json
+
+**Video chat not working**:
+- Check browser permissions for camera/microphone
+- Ensure HTTPS for production (WebRTC requirement)
+
+**Monaco Editor not loading**:
+- Check console for CDN errors
+- Ensure internet connection for Monaco assets
+
+## License
+
+MIT
+
+## Author
+
+Built as a demonstration of real-time collaborative features for interviews and learning.
