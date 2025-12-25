@@ -435,5 +435,5 @@ Built as a demonstration of real-time collaborative features using modern web te
 
 ## Author
 
-**Ahsan Ali**
+**itsaahsan**
 GitHub: [@itsaahsan](https://github.com/itsaahsan)
