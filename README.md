@@ -432,3 +432,8 @@ This project is ideal for:
 ---
 
 Built as a demonstration of real-time collaborative features using modern web technologies.
+
+## Author
+
+**Ahsan Ali**
+GitHub: [@itsaahsan](https://github.com/itsaahsan)
